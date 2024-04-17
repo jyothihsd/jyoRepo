@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="enabled">No</value>
+  <value name="system_package">no</value>
+  <value name="version">1.0</value>
+  <null name="shutdown_services"/>
+  <null name="replication_services"/>
+  <record name="requires" javaclass="com.wm.util.Values">
+    <value name="WxConfig">1.9</value>
+  </record>
+  <value name="listACL">Default</value>
+  <value name="webappLoad">yes</value>
+  <value name="reloadWithDependentPackage">yes</value>
+  <value name="build"></value>
+  <value name="description"></value>
+  <value name="created_date">29-06-2023 16:11:51 IST</value>
+  <null name="extendedProperties"/>
+  <value name="name">NBK_LoggingFramework</value>
+  <value name="time">2023-10-11 12:34:47 IST</value>
+  <value name="jvm_version">11.0.19</value>
+  <value name="publisher">SAG-J06L573.eur.ad.sag</value>
+  <value name="patch_nums"></value>
+</Values>
