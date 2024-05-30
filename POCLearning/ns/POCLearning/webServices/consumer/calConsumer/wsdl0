@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="calculator" targetNamespace="http://SAG-98B2PX3.eur.ad.sag/MyLearning.webServices.provider:calculator" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soapjms="http://www.w3.org/2010/soapjms/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://SAG-98B2PX3.eur.ad.sag/MyLearning.webServices.provider:calculator" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://SAG-98B2PX3.eur.ad.sag/MyLearning.webServices.provider:calculator" xmlns:tns="http://SAG-98B2PX3.eur.ad.sag/MyLearning.webServices.provider:calculator" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+          <xsd:element name="cal" type="tns:cal"/>
+          <xsd:element name="calResponse" type="tns:calResponse"/>
+          <xsd:complexType name="cal">
+            <xsd:sequence>
+              <xsd:element name="in1" nillable="true" type="xsd:string"/>
+              <xsd:element name="in2" nillable="true" type="xsd:string"/>
+              <xsd:element name="opt" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="calResponse">
+            <xsd:sequence>
+              <xsd:element name="output" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+        	</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="calculator_PortType_cal">
+    <wsdl:part name="parameters" element="tns:cal">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="calculator_PortType_calResponse">
+    <wsdl:part name="parameters" element="tns:calResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="calculator_PortType">
+    <wsdl:operation name="cal">
+      <wsdl:input message="tns:calculator_PortType_cal">
+    </wsdl:input>
+      <wsdl:output message="tns:calculator_PortType_calResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MyLearning_webServices_provider_calculator_Binder" type="tns:calculator_PortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="cal">
+      <soap:operation soapAction="MyLearning_webServices_provider_calculator_Binder_cal" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MyLearning.webServices.provider.calculator">
+    <wsdl:port name="MyLearning_webServices_provider_calculator_Port" binding="tns:MyLearning_webServices_provider_calculator_Binder">
+      <soap:address location="http://localhost:5555/ws/MyLearning.webServices.provider:calculator/MyLearning_webServices_provider_calculator_Port"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
