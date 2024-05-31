@@ -5,28 +5,30 @@ pipeline {
         stage('Build') {
             steps {
                 echo '**Building assets**'
-		bat 'C:/SoftwareAG1015_BuildServer/common/AssetBuildEnvironment/bin/build.bat -Dbuild.source.dir=%WORKSPACE%'
+		bat 'C:/SoftwareAG_LogFW/common/AssetBuildEnvironment/bin/build.bat -Dbuild.source.dir=%WORKSPACE%'
             }
-        }		
-/*        stage('GenerateAutomator'){
+        }	
+/*       stage('GenerateAutomator'){
             steps {
 			
 			    echo '**Generating Project Automator**'
-                bat 'C:/SoftwareAG1015_BuildServer/common/AssetBuildEnvironment/bin/build.bat -f C:/Work/CICD/config/Deployer/projectAutomator.xml -Dbuild.output.dir=C:/Work/CICD/runtime/build'
+                bat 'C:/SoftwareAG_LogFW/common/AssetBuildEnvironment/bin/build.bat -f C:/Work/CICD/config/Deployer/projectAutomator.xml -Dbuild.output.dir=C:/Work/CICD/runtime/build'
             }
-        } 
-*/
+        } */
+
 	  stage('CreateProject'){
             steps {
 			    echo '**Creating Deployment Project**'
-                bat 'C:/SoftwareAG1015_BuildServer/common/AssetBuildEnvironment/bin/build.bat createProject'
+                bat 'C:/SoftwareAG_LogFW/common/AssetBuildEnvironment/bin/build.bat createProject'
             }
         }
-/*		stage('Deploy'){
+		stage('Deploy'){
+			
             steps {
-                bat '%WM_DEPLOYER_DIR%/bin/Deployer.bat --deploy -dc Deployment_Candidate -project Deployment_Project -host %IS_HOST% -port %IS_PORT% -user %IS_USER_NAME% -pwd %IS_USER_PWD%'
+echo '**Deploying Project**'
+                bat 'C:/SoftwareAG_LogFW/common/AssetBuildEnvironment/bin/build.bat DeployProject'
             }
         }  
-*/		
+		
     }
 }
